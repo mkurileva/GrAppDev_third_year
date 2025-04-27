@@ -65,6 +65,8 @@ function Board({ xIsNext, squares, onPlay }) {
   let status;
   if (winner) {
     status = 'Победитель: ' + winner;
+  } else if (squares.every(square => square !== null)) {
+    status = 'Ничья!';
   } else {
     status = 'Следующий игрок: ' + (xIsNext ? 'X' : 'O');
   }
@@ -90,6 +92,7 @@ function Board({ xIsNext, squares, onPlay }) {
     </>
   );
 }
+
 
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
